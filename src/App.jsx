@@ -14,7 +14,7 @@ export default function Portfolio() {
       title: 'Smart Enrollment System & AI Chatbot',
       role: 'Project Lead & Documentation Head',
       year: '2026',
-      status: 'DEPLOYED',
+      status: 'ONGOING',
       version: '2.1',
       highlights: [
         { icon: <Workflow size={14} className="text-emerald-600" />, text: 'Designed modular enrollment workflow' },
@@ -31,10 +31,10 @@ export default function Portfolio() {
     {
       arch: 'SPA',
       id: 'PROJECT_02',
-      title: 'E\'spasyo Online Ordering System',
+      title: 'E\'spasyo Online System',
       role: 'Frontend Developer',
       year: '2026',
-      status: 'DEPLOYED',
+      status: 'ONGOING',
       version: '1.0',
       highlights: [
         { icon: <Workflow size={14} className="text-emerald-600" />, text: 'Developed responsive user interface for ordering' },
@@ -153,6 +153,7 @@ export default function Portfolio() {
   const [currentPage, setCurrentPage] = useState(1)
   const postsPerPage = 2
   const [showBackToTop, setShowBackToTop] = useState(false)
+  const [showEmailModal, setShowEmailModal] = useState(false)
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth'
@@ -204,9 +205,9 @@ export default function Portfolio() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
           <a
             href="#"
-            className="text-sm font-bold tracking-widest transition-colors hover:text-emerald-600"
+            className="font-mono text-sm font-bold tracking-widest transition-colors hover:text-emerald-600"
           >
-            ENATECH
+            &lt;ENATECH /&gt;
           </a>
         </div>
       </header>
@@ -231,6 +232,12 @@ export default function Portfolio() {
                 Calamba City, Philippines
               </div>
               <div className="mt-1 flex items-center gap-2 text-sm text-zinc-600">
+                <Mail size={16} />
+                <a href="mailto:lorenadelejero14@gmail.com" className="transition-colors hover:text-emerald-600">
+                  lorenadelejero14@gmail.com
+                </a>
+              </div>
+              <div className="mt-1 flex items-center gap-2 text-sm text-zinc-600">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-emerald-600">
                   <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
@@ -238,7 +245,7 @@ export default function Portfolio() {
                     <path d="M4 12.9L7.14286 16.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path> <path d="M20 7.5625L11.4283 16.5625L11 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
                   </g>
                 </svg>
-                <span className="animate-pulse">Open for Collaboration / Commissions</span>
+                <span className="animate-pulse text-emerald-600">Open for Collaboration / Commissions</span>
               </div>
             </div>
 
@@ -303,6 +310,12 @@ export default function Portfolio() {
                 <a
                   key={social.label}
                   href={social.href}
+                  onClick={(e) => {
+                    if (social.label === 'Email') {
+                      e.preventDefault()
+                      setShowEmailModal(true)
+                    }
+                  }}
                   target={social.label === 'Email' ? undefined : "_blank"}
                   rel={social.label === 'Email' ? undefined : "noreferrer"}
                   className="group flex items-center gap-4 rounded-2xl border border-zinc-100 bg-zinc-50 p-4 transition-all hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-md hover:shadow-emerald-500/5"
@@ -566,6 +579,30 @@ export default function Portfolio() {
                   )
                 })}
                 {!selectedBlog.content && <p>{selectedBlog.desc}</p>}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* --- EMAIL MODAL --- */}
+        {showEmailModal && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={() => setShowEmailModal(false)}>
+            <div className="relative w-full max-w-md overflow-hidden rounded-2xl bg-white p-8 shadow-2xl text-center" onClick={e => e.stopPropagation()}>
+              <button 
+                onClick={() => setShowEmailModal(false)}
+                className="absolute right-4 top-4 rounded-full p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900"
+              >
+                <X size={20} />
+              </button>
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                <Mail size={24} />
+              </div>
+              <h2 className="text-2xl font-bold text-zinc-900 mb-2">Get in Touch</h2>
+              <p className="text-sm text-zinc-600 mb-6">
+                Feel free to reach out for collaborations or just a friendly hello!
+              </p>
+              <div className="rounded-xl bg-zinc-50 border border-zinc-200 p-4 select-all text-zinc-900 font-medium text-sm">
+                lorenadelejero14@gmail.com
               </div>
             </div>
           </div>
