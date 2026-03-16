@@ -1,8 +1,10 @@
 ﻿﻿import React, { useState, useEffect, useRef } from 'react'
-import { Mail, Github, Workflow, ShieldCheck, FileCode, ChevronDown, Facebook, Info, Instagram, MapPin, ArrowRight, X, Search, ChevronLeft, ChevronRight, ArrowUp } from 'lucide-react'
+import { Mail, Github, Workflow, ShieldCheck, FileCode, ChevronDown, Facebook, Info, Instagram, MapPin, ArrowRight, X, Search, ChevronLeft, ChevronRight, ArrowUp, Palette } from 'lucide-react'
 import loren2Img from './assets/loren2.jpg'
 // import cvFile from './assets/Delejero_Lorena.pdf'
 const cvFile = '#'
+
+import ColorPaletteGenerator from './components/ColorPaletteGenerator';
 
 export default function Portfolio() {
   const activePhoto = loren2Img
@@ -47,6 +49,25 @@ export default function Portfolio() {
   // update inventory
 }
 `,
+    },
+    {
+      arch: 'SPA',
+      id: 'PROJECT_03',
+      title: 'Color Palette Generator',
+      role: 'Frontend Developer',
+      year: '2024',
+      status: 'LIVE',
+      version: '1.0',
+      highlights: [
+{ url: 'https://lorena14-art.github.io/color-generator/', icon: <Palette size={14} className="text-emerald-600" />, text: 'Live Demo →' },
+        { icon: <Workflow size={14} className="text-emerald-600" />, text: 'Lock favorite colors, copy to clipboard' },
+        { icon: <FileCode size={14} className="text-emerald-600" />, text: 'Gradient builder with CSS export' },
+      ],
+      snippet: `class ColorPaletteGenerator {
+  generateRandomColor() {
+    return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+  }
+}`,
     },
   ]
 
@@ -773,12 +794,28 @@ function ProjectCard({ id, arch, title, role, year, status, version, highlights,
       </div>
 
       <div className="mb-6 space-y-2 text-xs text-zinc-600">
-        {highlights.map((item) => (
-          <div key={item.text} className="flex items-start gap-2">
-            <span className="mt-0.5">{item.icon}</span>
-            <span>{item.text}</span>
-          </div>
-        ))}
+{highlights.map((item) => {
+  if (item.url) {
+    return (
+      <a
+        key={item.text}
+        href={item.url}
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-500 underline decoration-emerald-500/50 underline-offset-2 transition-all"
+      >
+        <span className="mt-0.5">{item.icon}</span>
+        <span>{item.text}</span>
+      </a>
+    );
+  }
+  return (
+    <div key={item.text} className="flex items-start gap-2">
+      <span className="mt-0.5">{item.icon}</span>
+      <span>{item.text}</span>
+    </div>
+  );
+})}
       </div>
 
       <button
