@@ -291,7 +291,7 @@ export default function Portfolio() {
           <div>
             <h2 className="text-3xl font-bold tracking-tight">About</h2>
             <p className="mt-4 text-sm leading-relaxed text-zinc-600">
-              I am a Frontend Developer and Research Lead based in Laguna, Philippines, specializing in the intersection of polished user interfaces and intelligent backend logic. With a deep foundation in the few stack (Tailwind, Alpine, Laravel) and React, I focus on architecting systems that are not only visually precise but functionally robust.
+              I am a Frontend Developer and Research Lead based in Laguna, Philippines, specializing in the intersection of polished user interfaces and intelligent backend logic. With a deep foundation in few stack (Tailwind, Alpine, Laravel) and React, I focus on architecting systems that are not only visually precise but functionally robust.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-zinc-600">
               Much of my recent work involves bridging the gap between raw data and user experience, specifically through AI-integrated platforms and RAG-powered assistants. As a project lead, I prioritize clean documentation and scalable system architecture, ensuring that every line of code serves a clear purpose. I thrive in collaborative environments where the goal is to solve complex, real-world problems through innovative digital solutions.
