@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom 'Hard-Coded' Reset */
+body {
+  @apply bg-[#0a0a0a] text-zinc-400 font-mono antialiased;
+}
